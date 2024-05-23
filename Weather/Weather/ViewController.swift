@@ -13,10 +13,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setWeatherType()
     }
     
     @IBAction func reloadBtn(_ sender: Any) {
         setWeatherType()
+    }
+    @IBAction func closeBtn(_ sender: Any) {
+        dismiss(animated: true)
     }
     
     func setWeatherType() {
@@ -36,4 +40,3 @@ class ViewController: UIViewController {
         }
     }
 }
-
