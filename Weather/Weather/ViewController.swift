@@ -6,25 +6,29 @@
 //
 
 import UIKit
-import YumemiWeather
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, YumemiDelegate {
     @IBOutlet weak var weatherImg: UIImageView!
+    let weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        weatherManager.delegate = self
         setWeatherType()
     }
     
     @IBAction func reloadBtn(_ sender: Any) {
-        setWeatherType()
+        weatherManager.updateWeather()
     }
     @IBAction func closeBtn(_ sender: Any) {
         dismiss(animated: true)
     }
     
     func setWeatherType() {
-        let weather = YumemiWeather.fetchWeatherCondition()
+        weatherManager.updateWeather()
+    }
+
+    func setWeatherImages(weather: String) {
         switch weather {
         case "sunny":
             weatherImg.image = UIImage(named: "sunny")?.withRenderingMode(.alwaysTemplate)
