@@ -9,7 +9,7 @@ import Foundation
 import YumemiWeather
 
 protocol YumemiDelegate {
-    func setWeatherImages(weather: String)
+    func setWeatherImages(type: String)
 }
 
 class WeatherManager {
@@ -17,6 +17,6 @@ class WeatherManager {
     
     func updateWeather() {
         let weather = YumemiWeather.fetchWeatherCondition()
-        delegate?.setWeatherImages(weather: weather)
+        delegate?.setWeatherImages(type: weather)
     }
 }

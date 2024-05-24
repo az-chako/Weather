@@ -7,14 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, YumemiDelegate {
+class ViewController: UIViewController {
     @IBOutlet weak var weatherImg: UIImageView!
     let weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherManager.delegate = self
-        setWeatherType()
     }
     
     @IBAction func reloadBtn(_ sender: Any) {
@@ -23,13 +22,12 @@ class ViewController: UIViewController, YumemiDelegate {
     @IBAction func closeBtn(_ sender: Any) {
         dismiss(animated: true)
     }
-    
-    func setWeatherType() {
-        weatherManager.updateWeather()
-    }
+}
 
-    func setWeatherImages(weather: String) {
-        switch weather {
+    extension ViewController: YumemiDelegate {
+    
+    func setWeatherImages(type: String) {
+        switch type {
         case "sunny":
             weatherImg.image = UIImage(named: "sunny")?.withRenderingMode(.alwaysTemplate)
             weatherImg.tintColor = .red
