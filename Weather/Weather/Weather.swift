@@ -10,13 +10,18 @@ import YumemiWeather
 
 protocol YumemiDelegate {
     func setWeatherImages(type: String)
+    func didFailWithError(error: Error)
 }
 
 class WeatherManager {
     var delegate: YumemiDelegate?
     
-    func updateWeather() {
-        let weather = YumemiWeather.fetchWeatherCondition()
-        delegate?.setWeatherImages(type: weather)
+    func updateWeather(){
+        do {
+            let weather = try YumemiWeather.fetchWeatherCondition(at:"")
+            self.delegate? .setWeatherImages(type: weather)
+        } catch {
+            self.delegate?.didFailWithError(error : error)
+        }
     }
 }

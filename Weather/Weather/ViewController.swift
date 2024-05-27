@@ -41,4 +41,9 @@ class ViewController: UIViewController {
             break
         }
     }
+        func didFailWithError(error: Error) {
+            let alert = UIAlertController(title: "Error P12273", message: "時間をおいてもう一度お試しください", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default,handler:  nil))
+            self.present(alert, animated: true, completion: nil)
+        }
 }
