@@ -10,18 +10,32 @@ import YumemiWeather
 
 protocol YumemiDelegate {
     func setWeatherImages(type: String)
+    func updateWeatherInfo(minTemprature: Int, maxTemprature: Int)
     func didFailWithError(error: Error)
 }
 
 class WeatherManager {
     var delegate: YumemiDelegate?
     
-    func updateWeather(){
+    let requestJson = """
+    {
+    "area": "Tokyo","date": "2020-04-01T12:00:00+09:00"
+    }
+    """
+    
+    func updateWeather() {
         do {
-            let weather = try YumemiWeather.fetchWeatherCondition(at:"")
-            self.delegate? .setWeatherImages(type: weather)
+            let weatherData = try YumemiWeather.fetchWeather(requestJson)
+            guard let data = weatherData.data(using: .utf8) else { return }
+            if let weatherDictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                guard let minTemprature = weatherDictionary["min_temperature"] as? Int,
+                      let maxTemprature = weatherDictionary["max_temperature"] as? Int,
+                      let weatherCondition = weatherDictionary["weather_condition"] as? String else { return }
+                delegate? .setWeatherImages(type: weatherCondition)
+                delegate? .updateWeatherInfo(minTemprature: minTemprature, maxTemprature: maxTemprature)
+            }
         } catch {
-            self.delegate?.didFailWithError(error : error)
+            self.delegate?.didFailWithError(error: error)
         }
     }
 }

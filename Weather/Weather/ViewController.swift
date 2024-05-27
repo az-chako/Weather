@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var weatherImg: UIImageView!
+    @IBOutlet weak var minTemperatureLabel: UILabel!
+    @IBOutlet weak var maxTemperatureLabel: UILabel!
     let weatherManager = WeatherManager()
     
     override func viewDidLoad() {
@@ -41,8 +43,13 @@ class ViewController: UIViewController {
             break
         }
     }
+        
+        func updateWeatherInfo(minTemprature: Int, maxTemprature: Int) {
+            minTemperatureLabel.text = "\(minTemprature)"
+            maxTemperatureLabel.text = "\(maxTemprature)"
+        }
         func didFailWithError(error: Error) {
-            let alert = UIAlertController(title: "Error P12273", message: "時間をおいてもう一度お試しください", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "時間をおいてもう一度お試しください", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default,handler:  nil))
             self.present(alert, animated: true, completion: nil)
         }
