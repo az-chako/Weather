@@ -101,8 +101,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="cT9-dL-5wN"/>
                     <connections>
-                        <outlet property="maxTemperatureLabel" destination="QGG-tJ-ofx" id="r9B-eO-CCI"/>
-                        <outlet property="minTemperatureLabel" destination="BIP-zI-Faq" id="LRe-Aw-zCD"/>
+                        <outlet property="maxTemperatureLabel" destination="QGG-tJ-ofx" id="FPk-nM-qzQ"/>
+                        <outlet property="minTemperatureLabel" destination="BIP-zI-Faq" id="k4t-dy-E76"/>
                         <outlet property="weatherImg" destination="pkm-6C-ZZw" id="fHH-yU-9pC"/>
                     </connections>
                 </viewController>

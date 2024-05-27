@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
 }
 
-    extension ViewController: YumemiDelegate {
+extension ViewController: YumemiDelegate {
     
     func setWeatherImages(type: String) {
         switch type {
@@ -43,14 +43,14 @@ class ViewController: UIViewController {
             break
         }
     }
-        
-        func updateWeatherInfo(minTemprature: Int, maxTemprature: Int) {
-            minTemperatureLabel.text = "\(minTemprature)"
-            maxTemperatureLabel.text = "\(maxTemprature)"
-        }
-        func didFailWithError(error: Error) {
-            let alert = UIAlertController(title: "Error", message: "時間をおいてもう一度お試しください", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default,handler:  nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+    
+    func setWeatherTemprature(minTemprature: Int, maxTemprature: Int) {
+        minTemperatureLabel.text = "\(minTemprature)"
+        maxTemperatureLabel.text = "\(maxTemprature)"
+    }
+    func setWeatherError(error: Error) {
+        let alert = UIAlertController(title: "Error", message: "時間をおいてもう一度お試しください", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default,handler:  nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

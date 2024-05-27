@@ -10,8 +10,8 @@ import YumemiWeather
 
 protocol YumemiDelegate {
     func setWeatherImages(type: String)
-    func updateWeatherInfo(minTemprature: Int, maxTemprature: Int)
-    func didFailWithError(error: Error)
+    func setWeatherTemprature(minTemprature: Int, maxTemprature: Int)
+    func setWeatherError(error: Error)
 }
 
 class WeatherManager {
@@ -32,10 +32,10 @@ class WeatherManager {
                       let maxTemprature = weatherDictionary["max_temperature"] as? Int,
                       let weatherCondition = weatherDictionary["weather_condition"] as? String else { return }
                 delegate? .setWeatherImages(type: weatherCondition)
-                delegate? .updateWeatherInfo(minTemprature: minTemprature, maxTemprature: maxTemprature)
+                delegate? .setWeatherTemprature(minTemprature: minTemprature, maxTemprature: maxTemprature)
             }
         } catch {
-            self.delegate?.didFailWithError(error: error)
+            self.delegate?.setWeatherError(error: error)
         }
     }
 }
