@@ -8,32 +8,48 @@
 import Foundation
 import YumemiWeather
 
+struct Date: Codable {
+    let area: String
+    let date: String
+}
+
+struct Weather: Codable {
+    let weatherImage: String
+    let minTemperature: Int
+    let maxTemperature: Int
+    enum CodingKeys: String, CodingKey {
+        case weatherImage = "weather_condition"
+        case minTemperature = "min_Temperature"
+        case maxTemperature = "max_Temperature"
+    }
+}
 protocol YumemiDelegate {
-    func setWeatherImages(type: String)
-    func setWeatherTemprature(minTemprature: Int, maxTemprature: Int)
+    func setWeather(weather: Weather)
     func setWeatherError(error: Error)
 }
 
 class WeatherManager {
     var delegate: YumemiDelegate?
     
-    let requestJson = """
-    {
-    "area": "Tokyo","date": "2020-04-01T12:00:00+09:00"
-    }
-    """
-    
     func updateWeather() {
+        let requestJson = Date(area:"tokyo", date: "2020-04-01T12:00:00+09:00")
+        
         do {
-            let weatherData = try YumemiWeather.fetchWeather(requestJson)
-            guard let data = weatherData.data(using: .utf8) else { return }
-            if let weatherDictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                guard let minTemprature = weatherDictionary["min_temperature"] as? Int,
-                      let maxTemprature = weatherDictionary["max_temperature"] as? Int,
-                      let weatherCondition = weatherDictionary["weather_condition"] as? String else { return }
-                delegate? .setWeatherImages(type: weatherCondition)
-                delegate? .setWeatherTemprature(minTemprature: minTemprature, maxTemprature: maxTemprature)
+            let encoder = JSONEncoder()
+            let jsonData = try encoder.encode(requestJson)
+            guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+                return
             }
+            
+            let weatherData = try YumemiWeather.fetchWeather(jsonString)
+            
+            guard let jsonData = weatherData.data(using: .utf8) else {
+                return
+            }
+            let decoder = JSONDecoder()
+            let weather = try decoder.decode(Weather.self, from: jsonData)
+            delegate?.setWeather(weather: weather)
+            print(weather)
         } catch {
             self.delegate?.setWeatherError(error: error)
         }

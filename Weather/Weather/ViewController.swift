@@ -28,26 +28,22 @@ class ViewController: UIViewController {
 
 extension ViewController: YumemiDelegate {
     
-    func setWeatherImages(type: String) {
-        switch type {
+    func setWeather(weather: Weather) {
+        weatherImg.image = UIImage(named: weather.weatherImage)?.withRenderingMode(.alwaysTemplate)
+        switch weather.weatherImage {
         case "sunny":
-            weatherImg.image = UIImage(named: "sunny")?.withRenderingMode(.alwaysTemplate)
             weatherImg.tintColor = .red
         case "cloudy":
-            weatherImg.image = UIImage(named: "cloudy")?.withRenderingMode(.alwaysTemplate)
             weatherImg.tintColor = .gray
         case "rainy":
-            weatherImg.image = UIImage(named: "rainy")?.withRenderingMode(.alwaysTemplate)
             weatherImg.tintColor = .blue
         default:
             break
         }
+        self.minTemperatureLabel.text = "\(weather.minTemperature)"
+        self.maxTemperatureLabel.text = "\(weather.maxTemperature)"
     }
     
-    func setWeatherTemprature(minTemprature: Int, maxTemprature: Int) {
-        minTemperatureLabel.text = "\(minTemprature)"
-        maxTemperatureLabel.text = "\(maxTemprature)"
-    }
     func setWeatherError(error: Error) {
         let alert = UIAlertController(title: "Error", message: "時間をおいてもう一度お試しください", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default,handler:  nil))
