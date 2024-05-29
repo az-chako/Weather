@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B8122F22C00282D0001DFBA /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8122F12C00282D0001DFBA /* Weather.swift */; };
+		8BAAE17C2C06BA3800EE0016 /* WeatherStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE17B2C06BA3800EE0016 /* WeatherStruct.swift */; };
 		8BB9D74B2BFDDCE7002604F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9D74A2BFDDCE7002604F2 /* AppDelegate.swift */; };
 		8BB9D74D2BFDDCE7002604F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9D74C2BFDDCE7002604F2 /* SceneDelegate.swift */; };
 		8BB9D74F2BFDDCE7002604F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9D74E2BFDDCE7002604F2 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		8B8122F12C00282D0001DFBA /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		8BAAE17B2C06BA3800EE0016 /* WeatherStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStruct.swift; sourceTree = "<group>"; };
 		8BB9D7472BFDDCE7002604F2 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB9D74A2BFDDCE7002604F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB9D74C2BFDDCE7002604F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				8BB9D74A2BFDDCE7002604F2 /* AppDelegate.swift */,
 				8BB9D74C2BFDDCE7002604F2 /* SceneDelegate.swift */,
 				8BB9D74E2BFDDCE7002604F2 /* ViewController.swift */,
+				8BAAE17B2C06BA3800EE0016 /* WeatherStruct.swift */,
 				8B8122F12C00282D0001DFBA /* Weather.swift */,
 				8BF7A4D22BFF041D003D2CA3 /* LaunchViewController.swift */,
 				8BB9D7502BFDDCE7002604F2 /* Main.storyboard */,
@@ -157,6 +160,7 @@
 				8BB9D74D2BFDDCE7002604F2 /* SceneDelegate.swift in Sources */,
 				8BF7A4D32BFF041D003D2CA3 /* LaunchViewController.swift in Sources */,
 				8B8122F22C00282D0001DFBA /* Weather.swift in Sources */,
+				8BAAE17C2C06BA3800EE0016 /* WeatherStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,21 +8,6 @@
 import Foundation
 import YumemiWeather
 
-struct Date: Codable {
-    let area: String
-    let date: String
-}
-
-struct Weather: Codable {
-    let weatherImage: String
-    let minTemperature: Int
-    let maxTemperature: Int
-    enum CodingKeys: String, CodingKey {
-        case weatherImage = "weather_condition"
-        case minTemperature = "min_temperature"
-        case maxTemperature = "max_temperature"
-    }
-}
 protocol YumemiDelegate {
     func setWeather(weather: Weather)
     func setWeatherError(error: Error)
