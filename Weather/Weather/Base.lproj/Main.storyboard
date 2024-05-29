@@ -86,12 +86,17 @@
                                     <action selector="reloadBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uvP-OL-NAb"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Two-OW-rvB">
+                                <rect key="frame" x="186.66666666666666" y="579.66666666666663" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Two-OW-rvB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Ib-zw-TUl"/>
                             <constraint firstItem="VxZ-bT-a47" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BwV-3d-NAu"/>
                             <constraint firstItem="D6b-fk-XWf" firstAttribute="top" secondItem="VxZ-bT-a47" secondAttribute="bottom" constant="80" id="P2X-hO-6bc"/>
+                            <constraint firstItem="Two-OW-rvB" firstAttribute="top" secondItem="VxZ-bT-a47" secondAttribute="bottom" constant="35" id="X9a-zu-atW"/>
                             <constraint firstItem="2Vr-Hq-69q" firstAttribute="centerX" secondItem="BIP-zI-Faq" secondAttribute="centerX" id="Z79-Ju-JAM"/>
                             <constraint firstItem="VxZ-bT-a47" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bVB-h9-Y1Y"/>
                             <constraint firstItem="D6b-fk-XWf" firstAttribute="centerX" secondItem="QGG-tJ-ofx" secondAttribute="centerX" id="i59-Vm-aNu"/>
@@ -101,6 +106,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cT9-dL-5wN"/>
                     <connections>
+                        <outlet property="indicator" destination="Two-OW-rvB" id="j7z-vx-cAX"/>
                         <outlet property="maxTemperatureLabel" destination="QGG-tJ-ofx" id="FPk-nM-qzQ"/>
                         <outlet property="minTemperatureLabel" destination="BIP-zI-Faq" id="k4t-dy-E76"/>
                         <outlet property="weatherImg" destination="pkm-6C-ZZw" id="fHH-yU-9pC"/>

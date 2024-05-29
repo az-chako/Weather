@@ -19,23 +19,26 @@ class WeatherManager {
     func updateWeather() {
         let requestJson = Date(area:"tokyo", date: "2020-04-01T12:00:00+09:00")
         
-        do {
-            let encoder = JSONEncoder()
-            let jsonData = try encoder.encode(requestJson)
-            guard let jsonString = String(data: jsonData, encoding: .utf8) else {
-                return
+        DispatchQueue.global().async {
+            do {
+                let encoder = JSONEncoder()
+                let jsonData = try encoder.encode(requestJson)
+                guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+                    return
+                }
+                
+                let weatherData = try YumemiWeather.syncFetchWeather(jsonString)
+                
+                guard let jsonData = weatherData.data(using: .utf8) else {
+                    return
+                }
+                let decoder = JSONDecoder()
+                let weather = try decoder.decode(Weather.self, from: jsonData)
+                self.delegate?.setWeather(weather: weather)
+                
+            } catch {
+                self.delegate?.setWeatherError(error: error)
             }
-            
-            let weatherData = try YumemiWeather.fetchWeather(jsonString)
-            
-            guard let jsonData = weatherData.data(using: .utf8) else {
-                return
-            }
-            let decoder = JSONDecoder()
-            let weather = try decoder.decode(Weather.self, from: jsonData)
-            delegate?.setWeather(weather: weather)
-        } catch {
-            self.delegate?.setWeatherError(error: error)
         }
     }
 }
