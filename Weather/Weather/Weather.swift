@@ -19,8 +19,8 @@ struct Weather: Codable {
     let maxTemperature: Int
     enum CodingKeys: String, CodingKey {
         case weatherImage = "weather_condition"
-        case minTemperature = "min_Temperature"
-        case maxTemperature = "max_Temperature"
+        case minTemperature = "min_temperature"
+        case maxTemperature = "max_temperature"
     }
 }
 protocol YumemiDelegate {
@@ -49,7 +49,6 @@ class WeatherManager {
             let decoder = JSONDecoder()
             let weather = try decoder.decode(Weather.self, from: jsonData)
             delegate?.setWeather(weather: weather)
-            print(weather)
         } catch {
             self.delegate?.setWeatherError(error: error)
         }
