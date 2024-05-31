@@ -8,15 +8,8 @@
 import Foundation
 import YumemiWeather
 
-protocol YumemiDelegate {
-    func setWeather(weather: Weather)
-    func setWeatherError(error: Error)
-}
-
 class WeatherManager {
-    var delegate: YumemiDelegate?
-    
-    func updateWeather() {
+    func updateWeather(completion: @escaping (Result<Weather, Error>) -> Void) {
         let requestJson = Date(area:"tokyo", date: "2020-04-01T12:00:00+09:00")
         
         DispatchQueue.global().async {
@@ -34,10 +27,10 @@ class WeatherManager {
                 }
                 let decoder = JSONDecoder()
                 let weather = try decoder.decode(Weather.self, from: jsonData)
-                self.delegate?.setWeather(weather: weather)
+                completion(.success(weather))
                 
             } catch {
-                self.delegate?.setWeatherError(error: error)
+                completion(.failure(error))
             }
         }
     }
