@@ -22,3 +22,13 @@ struct Weather: Codable {
         case maxTemperature = "max_temperature"
     }
 }
+
+struct TableViewRequest: Codable {
+    let areas: [String]
+    let date: String
+}
+
+struct AreaResponse: Codable {
+    let area: String
+    let info: Weather
+}
