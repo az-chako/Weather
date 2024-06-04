@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import YumemiWeather
 
 struct WeatherDate: Codable {
     let area: String
@@ -29,6 +30,6 @@ struct TableViewRequest: Codable {
 }
 
 struct AreaResponse: Codable {
-    let area: String
+    let area: Area
     let info: Weather
 }
