@@ -10,7 +10,7 @@ import YumemiWeather
 
 class WeatherManager {
     func updateWeather(completion: @escaping (Result<Weather, Error>) -> Void) {
-        let requestJson = Date(area:"tokyo", date: "2020-04-01T12:00:00+09:00")
+        let requestJson = WeatherDate(area:"tokyo", date: "2020-04-01T12:00:00+09:00")
         
         DispatchQueue.global().async {
             do {

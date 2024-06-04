@@ -58,6 +58,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="showDetail" id="pcD-j4-JKl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -77,7 +80,6 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="tfQ-7e-Duh" id="due-uq-7ny"/>
-                        <segue destination="BYZ-38-t0r" kind="show" id="EdU-Mb-W9d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJ7-EI-06B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

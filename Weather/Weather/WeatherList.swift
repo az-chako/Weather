@@ -10,9 +10,10 @@ import YumemiWeather
 
 class WeatherList{
     func areaWeather(completion: @escaping(Result<[AreaResponse], Error>) -> Void) {
-        let requestJson = TableViewRequest (areas: ["Tokyo"], date: "2020-04-01T12:00:00+09:00")
-        
         DispatchQueue.global().async {
+            let date = Date().ISO8601Format()
+            let requestJson = TableViewRequest(areas: [], date: date)
+            
             do {
                 let encoder = JSONEncoder()
                 let jsonData = try encoder.encode(requestJson)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Date: Codable {
+struct WeatherDate: Codable {
     let area: String
     let date: String
 }
