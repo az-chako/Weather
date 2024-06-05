@@ -13,6 +13,21 @@ class TableListViewController: UIViewController, UITableViewDataSource,UITableVi
     
     var areaResponse: [AreaResponse] = []
     let refreshControl = UIRefreshControl()
+    // 英語の都市名から日本語の都市名へのマッピング辞書
+    let areaNamesInJapanese: [String: String] = [
+        "Sapporo": "札幌",
+        "Sendai": "仙台",
+        "Niigata": "新潟",
+        "Kanazawa": "金沢",
+        "Tokyo": "東京",
+        "Nagoya": "名古屋",
+        "Osaka": "大阪",
+        "Hiroshima": "広島",
+        "Kochi": "高知",
+        "Fukuoka": "福岡",
+        "Kagoshima": "鹿児島",
+        "Naha": "那覇"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +35,14 @@ class TableListViewController: UIViewController, UITableViewDataSource,UITableVi
         tableView.delegate = self
         setupRefreshControl()
         weatherResult()
+        // 次の画面のBackボタンを「戻る」に変更
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title:  "戻る", style:  .plain, target: nil, action: nil)
     }
     
     func setupRefreshControl() {
-            refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
-            tableView.refreshControl = refreshControl
-        }
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
     
     @objc private func refreshWeatherData(_ sender:Any) {
         weatherResult()
@@ -35,14 +52,24 @@ class TableListViewController: UIViewController, UITableViewDataSource,UITableVi
         let weatherListManager = WeatherList()
         weatherListManager.areaWeather { [weak self] result in
             DispatchQueue.main.async {
+                guard let self = self else { return }
                 switch result {
                 case .success(let list):
-                    self?.areaResponse = list
-                    self?.tableView.reloadData()
+                    self.areaResponse = list.map { response in
+                        var newResponse = response
+                        if let japaneseName = self.areaNamesInJapanese[response.area] {
+                            newResponse.area = japaneseName
+                        }
+                        return newResponse
+                    }
+                    self.tableView.reloadData()
+                    //                case .success(let list):
+                    //                    self?.areaResponse = list
+                    //                    self?.tableView.reloadData()
                 case .failure(let error):
-                    self?.showError(error: error)
+                    self.showError(error: error)
                 }
-                self?.refreshControl.endRefreshing()
+                self.refreshControl.endRefreshing()
             }
         }
     }
@@ -71,6 +98,10 @@ class TableListViewController: UIViewController, UITableViewDataSource,UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

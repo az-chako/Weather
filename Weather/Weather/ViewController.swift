@@ -70,8 +70,8 @@ class ViewController: UIViewController {
         default:
             break
         }
-        self.minTemperatureLabel.text = "\(weather.minTemperature)"
-        self.maxTemperatureLabel.text = "\(weather.maxTemperature)"
+        self.minTemperatureLabel.text = "最低気温\n\(weather.minTemperature)"
+        self.maxTemperatureLabel.text = "最高気温\n\(weather.maxTemperature)"
     }
     
     func showError(error: Error) {
