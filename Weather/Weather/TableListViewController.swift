@@ -77,8 +77,10 @@ class TableListViewController: UIViewController, UITableViewDataSource,UITableVi
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let selectedWeather = areaResponse[indexPath.row].info
+                let selectedArea = areaResponse[indexPath.row].area
                 if let detailVC = segue.destination as? ViewController {
                     detailVC.weather = selectedWeather
+                    detailVC.areaTitle = selectedArea
                 }
             }
         }

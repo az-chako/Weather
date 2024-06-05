@@ -21,9 +21,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    var areaTitle: String {
-        return "\(area)"
-    }
+    var areaTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +29,9 @@ class ViewController: UIViewController {
         if let weather = weather {
             updateUI(with: weather)
         }
-        if let weatherDate = weatherManager.weatherDate {
+        if let areaTitle = areaTitle {
                self.navigationController?.navigationBar.prefersLargeTitles = false
-               self.navigationItem.title = weatherDate.areaTitle
+               self.navigationItem.title = areaTitle
         }
     }
     

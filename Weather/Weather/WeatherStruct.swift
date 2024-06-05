@@ -30,6 +30,6 @@ struct TableViewRequest: Codable {
 }
 
 struct AreaResponse: Codable {
-    let area: Area
+    let area: String
     let info: Weather
 }
