@@ -13,6 +13,7 @@ class TableListViewController: UIViewController, UITableViewDataSource,UITableVi
     
     var areaResponse: [AreaResponse] = []
     let refreshControl = UIRefreshControl()
+    
     // 英語の都市名から日本語の都市名へのマッピング辞書
     let areaNamesInJapanese: [String: String] = [
         "Sapporo": "札幌",

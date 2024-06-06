@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="GqI-Nv-EjI" kind="relationship" relationship="rootViewController" id="CJg-ja-D13"/>
+                        <segue destination="Lmb-To-eUc" kind="relationship" relationship="rootViewController" id="EFd-ZA-t1R"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37f-De-blZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -48,7 +49,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tfQ-7e-Duh">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="byC-AW-RIJ" detailTextLabel="lpU-GZ-6Ib" style="IBUITableViewCellStyleSubtitle" id="OhO-wQ-aC6">
@@ -103,6 +104,83 @@
             </objects>
             <point key="canvasLocation" x="-756" y="4"/>
         </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="Eo7-rd-yYu">
+            <objects>
+                <viewController id="Lmb-To-eUc" customClass="CollectionViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f0V-zu-x7n">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zgN-qe-gwM">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kSG-yu-9Xb">
+                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="Cell" id="ux0-j9-Rcf" customClass="CollectionViewCell" customModule="Weather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WcW-Df-Jes" customClass="CollectionViewCell" customModule="Weather" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jez-kG-iM3">
+                                                    <rect key="frame" x="10" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFb-Na-6Rb">
+                                                    <rect key="frame" x="0.0" y="100" width="120" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="IFb-Na-6Rb" secondAttribute="bottom" id="0pb-La-PAf"/>
+                                                <constraint firstAttribute="bottom" secondItem="jez-kG-iM3" secondAttribute="bottom" constant="20" id="4UG-Fq-vLO"/>
+                                                <constraint firstItem="jez-kG-iM3" firstAttribute="top" secondItem="WcW-Df-Jes" secondAttribute="top" id="5Mr-nJ-4Li"/>
+                                                <constraint firstItem="jez-kG-iM3" firstAttribute="leading" secondItem="WcW-Df-Jes" secondAttribute="leading" constant="10" id="FI6-fU-ySu"/>
+                                                <constraint firstItem="IFb-Na-6Rb" firstAttribute="top" secondItem="jez-kG-iM3" secondAttribute="bottom" id="Ies-kM-oNz"/>
+                                                <constraint firstAttribute="trailing" secondItem="jez-kG-iM3" secondAttribute="trailing" constant="10" id="LqB-iq-jZj"/>
+                                                <constraint firstAttribute="trailing" secondItem="IFb-Na-6Rb" secondAttribute="trailing" id="TMM-W8-2qV"/>
+                                                <constraint firstItem="IFb-Na-6Rb" firstAttribute="leading" secondItem="WcW-Df-Jes" secondAttribute="leading" id="cPz-aq-19F"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="areaLabel" destination="IFb-Na-6Rb" id="i4h-0b-mYS"/>
+                                            <outlet property="imageView" destination="jez-kG-iM3" id="cyN-aS-ro7"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="showDetail" id="jqq-vA-IqH"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Lmb-To-eUc" id="jsh-E1-59p"/>
+                                    <outlet property="delegate" destination="Lmb-To-eUc" id="PbV-RQ-4Dy"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rCc-Bk-MGq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rCc-Bk-MGq" firstAttribute="trailing" secondItem="zgN-qe-gwM" secondAttribute="trailing" id="fnW-xH-nWl"/>
+                            <constraint firstItem="zgN-qe-gwM" firstAttribute="top" secondItem="rCc-Bk-MGq" secondAttribute="top" id="k0r-tu-kTY"/>
+                            <constraint firstItem="zgN-qe-gwM" firstAttribute="leading" secondItem="rCc-Bk-MGq" secondAttribute="leading" id="s3M-9z-8oh"/>
+                            <constraint firstItem="rCc-Bk-MGq" firstAttribute="bottom" secondItem="zgN-qe-gwM" secondAttribute="bottom" id="vRt-Mp-lDR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="TW1-XV-hEM"/>
+                    <connections>
+                        <outlet property="CollectionView" destination="zgN-qe-gwM" id="Oe1-mw-OQo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dJ-jy-aNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-756.48854961832058" y="783.80281690140851"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -154,6 +232,11 @@
                                 <buttonConfiguration key="configuration" style="plain" title="閉じる">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="closeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PQj-w0-yDM"/>
                                 </connections>
@@ -165,6 +248,11 @@
                                 <buttonConfiguration key="configuration" style="plain" title="更新">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="reloadBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uvP-OL-NAb"/>
                                 </connections>
@@ -201,6 +289,9 @@
             <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jqq-vA-IqH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
